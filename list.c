@@ -17,13 +17,6 @@ list_t *list_alloc() {
   return mylist;
 }
 
-node_t *create_new_node(elem val){ 
-  node_t* allocated_node = create_new_node(val);
-  allocated_node->value = val; 
-  allocated_node->next = NULL; 
-  return allocated_node;
-}
-
 void list_free(list_t *l) {
   node_t* curr = l->head;
   while (curr != NULL) {
@@ -74,7 +67,7 @@ void list_add_to_back(list_t *l, elem value) {
     cur_node->next->next = NULL;
 }
 void list_add_to_front(list_t *l, elem value) {
-  node_t* new_node = create_new_node(value);
+  node_t* new_node = (node_t *) malloc(sizeof(node_t));
   if (l->head!=NULL){
     new_node->next = l->head;
     l->head = new_node;
