@@ -46,7 +46,15 @@ char * listToString(list_t *l) {
   return buf;
 }
 
-int list_length(list_t *l) { return -1; }
+int list_length(list_t *l) { 
+  node_t* curr = l->head;
+  int length = 0;
+  while (curr != NULL) {
+    length++;
+    curr = curr->next;
+  }
+  return length; 
+}
 
 void list_add_to_back(list_t *l, elem value) {}
 void list_add_to_front(list_t *l, elem value) {
@@ -61,13 +69,25 @@ void list_add_to_front(list_t *l, elem value) {
     l->head = new_node;
   }
 }
-void list_add_at_index(list_t *l, elem value, int index) {}
+void list_add_at_index(list_t *l, elem value, int index) {
+
+}
 
 elem list_remove_from_back(list_t *l) { return -1; }
 elem list_remove_from_front(list_t *l) { return -1; }
 elem list_remove_at_index(list_t *l, int index) { return -1; }
 
 bool list_is_in(list_t *l, elem value) { return false; }
-elem list_get_elem_at(list_t *l, int index) { return -1; }
+elem list_get_elem_at(list_t *l, int index) {
+    int curr_index = 0;
+    node_t* curr = l->head;
+    while (curr != NULL) {
+      if (curr_index == index) {
+        return curr->value;
+      }
+    curr = curr->next;
+    curr_index++;
+    }
+gi}
 int list_get_index_of(list_t *l, elem value) { return -1; }
 

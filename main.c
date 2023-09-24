@@ -13,6 +13,8 @@ int main() {
   list_add_to_front(mylist, 20);
   list_add_to_front(mylist, 30);
   list_print(mylist);
+  printf("Length of list: %d\n",list_length(mylist)); 
+  printf("Element at index 2: %d\n",list_get_elem_at(mylist, 2));
   list_add_to_front(mylist, 40);
   list_add_to_front(mylist, 50);
   list_add_to_front(mylist, 60);
