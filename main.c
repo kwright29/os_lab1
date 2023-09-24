@@ -24,6 +24,8 @@ int main() {
   if(strcmp("100->90->80->70->60->50->40->30->20->10->NULL",listToString(mylist)) != 0)
   {
         printf("list_add_to_front : FAILED\n");
+  } else {
+        printf("list_add_to_front : PASSED\n");
   }
 
   list_print(mylist);
@@ -33,6 +35,8 @@ int main() {
   if(strcmp("100->90->70->60->50->40->30->20->10->NULL",listToString(mylist)) != 0)
   {
         printf("list_remove_at_index : FAILED\n");
+  } else {
+        printf("list_remove_at_index : PASSED\n");
   }
 
   list_remove_at_index(mylist, 20);
