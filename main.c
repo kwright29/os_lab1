@@ -8,10 +8,12 @@ int main() {
   printf("Write your Tests for your linked list implementation\n");
   list_t *mylist;
   mylist = list_alloc();
+  printf("My LIST\n");
   list_print(mylist);
   list_add_to_front(mylist, 10);
   list_add_to_front(mylist, 20);
   list_add_to_front(mylist, 30);
+  printf("My LIST\n");
   list_print(mylist);
   printf("Length of list: %d\n",list_length(mylist)); 
   printf("Element at index 2: %d\n",list_get_elem_at(mylist, 2));
@@ -29,9 +31,10 @@ int main() {
   } else {
         printf("list_add_to_front : PASSED\n");
   }
-
+  printf("My LIST\n");
   list_print(mylist);
   list_remove_at_index(mylist, 3);
+  printf("My LIST\n");
   list_print(mylist);
 
   if(strcmp("100->90->70->60->50->40->30->20->10->NULL",listToString(mylist)) != 0)
@@ -42,10 +45,13 @@ int main() {
   }
 
   list_remove_at_index(mylist, 20);
+  printf("My LIST\n");
   list_print(mylist);
   list_remove_at_index(mylist, 1);
+  printf("My LIST\n");
   list_print(mylist);
   list_remove_at_index(mylist, 6);
+  printf("My LIST\n");
   list_print(mylist);
 
   if(strcmp("90->80->60->50->40->20->10->NULL",listToString(mylist)) != 0)
@@ -54,7 +60,7 @@ int main() {
   }
   
 
-  // printf("The list length is %d\n", list_length(mylist));
+  printf("The list length is %d\n", list_length(mylist));
 
   // list_add_to_back(mylist, 39);
   // list_print(mylist);

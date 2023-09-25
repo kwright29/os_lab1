@@ -46,7 +46,7 @@ char * listToString(list_t *l) {
   return buf;
 }
 
-int list_length(list_t *l) { 
+int list_length(list_t *l) { //tested
   node_t* curr = l->head;
   int length = 0;
   while (curr != NULL) {
@@ -56,8 +56,17 @@ int list_length(list_t *l) {
   return length; 
 }
 
-void list_add_to_back(list_t *l, elem value) {}
-void list_add_to_front(list_t *l, elem value) {
+void list_add_to_back(list_t *l, elem value) {
+  node_t* curr = l->head;
+  while (curr->next != NULL) {
+    curr = curr->next;
+  }
+  curr->next = (node_t *) malloc(sizeof(node_t));
+  curr->next->value = value;
+  curr->next->next = NULL; 
+}
+
+void list_add_to_front(list_t *l, elem value)  { //tested
   node_t* new_node = (node_t *) malloc(sizeof(node_t));
   new_node->value = value;
   new_node->next = NULL;
@@ -69,11 +78,36 @@ void list_add_to_front(list_t *l, elem value) {
     l->head = new_node;
   }
 }
-void list_add_at_index(list_t *l, elem value, int index) {
 
+void list_add_at_index(list_t *l, elem value, int index) {
+  if (index <= 0) {
+    list_add_to_front(l, value);
+  } else if (index == list_length(l) - 1) {
+    list_add_to_back(l, value);
+  }
+  node_t* curr = l->head;
+  node_t* new_node = (node_t *) malloc(sizeof(node_t));
+  node_t* temp;
+  new_node->value = value;
+  while (index > 0) {
+    curr = curr->next;
+    index--;
+  }
+  new_node->next = temp->next;
+  temp->next = new_node;
 }
 
-elem list_remove_from_back(list_t *l) { return -1; }
+elem list_remove_from_back(list_t *l) {
+  node_t* curr = l->head;
+  if (curr->next == NULL) {
+    free(curr);
+  }
+  while (curr->next->next != NULL) {
+    curr = curr->next;
+  }
+  free(curr->next);
+  curr->next = NULL;
+}
 elem list_remove_from_front(list_t *l) { return -1; }
 elem list_remove_at_index(list_t *l, int index) { return -1; }
 
@@ -88,6 +122,17 @@ elem list_get_elem_at(list_t *l, int index) {
     curr = curr->next;
     curr_index++;
     }
-gi}
-int list_get_index_of(list_t *l, elem value) { return -1; }
+}
+int list_get_index_of(list_t *l, elem value) { 
+  node_t* curr = l->head;
+  int curr_index = 0;
+  while (curr != NULL) {
+    if (curr->value == value) {
+      return curr_index;
+    }
+    curr = curr->next;
+    curr_index++;
+  }
+  return curr_index;
+}
 
